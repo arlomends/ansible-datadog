@@ -20,3 +20,12 @@
           - "/proc/:/host/proc/:ro"
           - "/sys/fs/cgroup/:/host/sys/fs/cgroup:ro"
           - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
+
+    - name: Atualizar e subir Datadog Agent
+      community.docker.docker_container:
+        name: dd-agent
+        image: gcr.io/datadoghq/agent:7
+        pull: true
+        state: started
+        restart_policy: always
+        
