@@ -1,0 +1,22 @@
+---
+- name: Instalação do Datadog
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Subir container do Datadog Agent
+      community.docker.docker_container:
+        name: dd-agent
+        image: gcr.io/datadoghq/agent:7
+        state: started
+        restart_policy: always
+        privileged: true
+        env:
+          DD_API_KEY: "1e077dd1d355bc2132752fa547822b43"
+          DD_SITE: "us5.datadoghq.com"
+          DD_DOGSTATSD_NON_LOCAL_TRAFFIC: "true"
+        volumes:
+          - "/var/run/docker.sock:/var/run/docker.sock:ro"
+          - "/proc/:/host/proc/:ro"
+          - "/sys/fs/cgroup/:/host/sys/fs/cgroup:ro"
+          - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
