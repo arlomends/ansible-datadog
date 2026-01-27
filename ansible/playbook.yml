@@ -14,7 +14,7 @@
         restart_policy: always
         privileged: true
         env:
-          DD_API_KEY: "1e077dd1d355bc2132752fa547822b43"
+          DD_API_KEY: "Minha_KEY"
           DD_SITE: "us5.datadoghq.com"
           DD_REMOTE_CONFIGURATION_ENABLED: "true"
           DD_DOGSTATSD_NON_LOCAL_TRAFFIC: "true"
